@@ -8,6 +8,10 @@ before_install:
 
 script:
   - docker build --tag septimalmind/izumi-env:latest --tag septimalmind/izumi-env:${TRAVIS_BRANCH} --tag septimalmind/izumi-env:${TRAVIS_COMMIT} izumi-env
+  - docker build --tag septimalmind/izumi-env-legacy:latest --tag septimalmind/izumi-env-legacy:${TRAVIS_BRANCH} --tag septimalmind/izumi-env-legacy:${TRAVIS_COMMIT} izumi-env-legacy
   - docker push septimalmind/izumi-env:latest
   - docker push septimalmind/izumi-env:${TRAVIS_BRANCH}
   - docker push septimalmind/izumi-env:${TRAVIS_COMMIT}
+  - docker push septimalmind/izumi-env-legacy:latest
+  - docker push septimalmind/izumi-env-legacy:${TRAVIS_BRANCH}
+  - docker push septimalmind/izumi-env-legacy:${TRAVIS_COMMIT}
