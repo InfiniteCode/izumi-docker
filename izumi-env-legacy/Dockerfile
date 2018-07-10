@@ -5,6 +5,10 @@ ARG V_SCALA=2.12.6
 ARG V_TYPESCRIPT=2.9.2
 ARG V_GOLANG=1.10
 
+RUN mkdir /work
+VOLUME /work
+WORKDIR /work
+
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && apt-get install -y tzdata gnupg ca-certificates wget apt-transport-https software-properties-common python-software-properties && \
     ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
@@ -19,12 +23,12 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
     add-apt-repository -y ppa:openjdk-r/ppa
 
 RUN apt-get update && \
-    apt-get install -y openjdk-8-jdk sbt mono-devel nunit-console npm golang-${V_GOLANG} && \
+    apt-get install -y git openjdk-8-jdk sbt mono-devel nunit-console npm golang-${V_GOLANG} && \
     dpkg --purge --force-depends ca-certificates-java && \
     apt-get install ca-certificates-java && \
     apt-get clean -y
 
-RUN wget www.scala-lang.org/files/archive/scala-${V_SCALA}.deb && dpkg -i scala-${V_SCALA}.deb && rm -rf *.deb && \
+RUN wget -q www.scala-lang.org/files/archive/scala-${V_SCALA}.deb && dpkg -i scala-${V_SCALA}.deb && rm -rf *.deb && \
     npm i -g typescript@${V_TYPESCRIPT} && \
     ln -s /usr/bin/nodejs /usr/bin/node
 
