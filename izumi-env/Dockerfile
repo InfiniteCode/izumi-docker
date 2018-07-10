@@ -27,7 +27,7 @@ RUN apt-get update && \
 
 RUN wget -q www.scala-lang.org/files/archive/scala-${V_SCALA}.deb && dpkg -i scala-${V_SCALA}.deb && rm -rf *.deb && \
     npm i -g typescript@${V_TYPESCRIPT} && \
-    curl -L -o /usr/local/bin/coursier https://git.io/vgvpD && chmod +x /usr/local/bin/coursier
+    wget -q -O /usr/local/bin/coursier https://git.io/vgvpD && chmod +x /usr/local/bin/coursier
 
 #  /usr/lib/go-1.10/bin needs to be added into PATH manually: https://github.com/golang/go/wiki/Ubuntu
 ENV PATH $PATH:/usr/lib/go-${V_GOLANG}/bin
