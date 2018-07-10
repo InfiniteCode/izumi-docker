@@ -1,0 +1,7 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker build --tag izumi-env:latest,izumi-env:${TRAVIS_BRANCH},izumi-env:${TRAVIS_COMMIT} izumi-env
