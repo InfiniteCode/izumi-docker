@@ -29,6 +29,7 @@ RUN apt-get update && \
     apt-get clean -y
 
 RUN wget -q www.scala-lang.org/files/archive/scala-${V_SCALA}.deb && dpkg -i scala-${V_SCALA}.deb && rm -rf *.deb && \
+    npm config set strict-ssl false && \
     npm i -g typescript@${V_TYPESCRIPT} && \
     ln -s /usr/bin/nodejs /usr/bin/node && \
     wget -q -O /usr/local/bin/coursier https://git.io/vgvpD && chmod +x /usr/local/bin/coursier
