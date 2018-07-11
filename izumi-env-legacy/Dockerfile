@@ -6,11 +6,14 @@ ARG V_TYPESCRIPT=2.9.2
 ARG V_GOLANG=1.10
 
 RUN mkdir /work
+RUN mkdir /root
 VOLUME /work
+VOLUME /root
 WORKDIR /work
 
+
 RUN export DEBIAN_FRONTEND=noninteractive && \
-    apt-get update && apt-get install -y tzdata gnupg ca-certificates wget apt-transport-https software-properties-common python-software-properties && \
+    apt-get update && apt-get install -y tzdata gnupg ca-certificates wget curl unzip apt-transport-https software-properties-common python-software-properties && \
     ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
     dpkg-reconfigure --frontend noninteractive tzdata && \
     apt-get clean -y
