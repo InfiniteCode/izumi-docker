@@ -24,7 +24,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E03280
     echo "deb https://dl.bintray.com/sbt/debian /" | tee /etc/apt/sources.list.d/sbt.list
 
 RUN apt-get update && \
-    apt-get install -y git openjdk-8-jdk sbt mono-devel nunit-console npm golang-${V_GOLANG} && \
+    apt-get install -y git openjdk-8-jdk sbt mono-devel nuget nunit-console npm golang-${V_GOLANG} && \
     apt-get clean -y
 
 RUN wget -q www.scala-lang.org/files/archive/scala-${V_SCALA}.deb && dpkg -i scala-${V_SCALA}.deb && rm -rf *.deb && \
