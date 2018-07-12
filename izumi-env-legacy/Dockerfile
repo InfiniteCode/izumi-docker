@@ -5,8 +5,8 @@ ARG V_SCALA=2.12.6
 ARG V_TYPESCRIPT=2.9.2
 ARG V_GOLANG=1.10
 
-RUN mkdir /work
-RUN mkdir /root
+RUN mkdir -p /work
+RUN mkdir -p /root
 VOLUME /work
 VOLUME /root
 WORKDIR /work
