@@ -37,6 +37,7 @@ ENV PATH $PATH:/usr/lib/go-${V_GOLANG}/bin
 RUN java -version && \
     scalac -version && \
     csc -version && \
+    npm -v && \
     tsc -version && \
     go version && \
     (sbt -help || true)
